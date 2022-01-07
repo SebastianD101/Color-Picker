@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<title>Sebastian's Color Picker</title>
+</head>
+<body>
+<div class="split left" id="left">
+  <div class="centered">
+    <div class="slidecontainer">
+        <p>Red Value: <input id="redVal1"></p>
+        <input type="range" min="0" max="255" value="128" class="slider" id="redRange1">
+    </div>
+    <div class="slidecontainer">
+        <p>Green Value: <input id="greenVal1"></p>
+        <input type="range" min="0" max="255" value="128" class="slider" id="greenRange1">
+    </div>
+    <div class="slidecontainer">
+        <p>Blue Value: <input id="blueVal1"></p>
+        <input type="range" min="0" max="255" value="255" class="slider" id="blueRange1">
+    </div>
+
+    <p id="rgb_left">rgb(<span id="value_left">128, 128, 128</span>)</p>
+  </div>
+</div>
+
+<div class="split right" id="right">
+  <div class="centered">
+    <div class="slidecontainer">
+        <p>Red Value: <input id="redVal2"></p>
+        <input type="range" min="0" max="255" value="255" class="slider" id="redRange2">
+    </div>
+    <div class="slidecontainer">
+        <p>Green Value: <input id="greenVal2"></p>
+        <input type="range" min="0" max="255" value="128" class="slider" id="greenRange2">
+    </div>
+    <div class="slidecontainer">
+        <p>Blue Value: <input id="blueVal2"></p>
+        <input type="range" min="0" max="255" value="128" class="slider" id="blueRange2">
+    </div>
+
+    <p id="rgb_right">rgb(<span id="value_right">128, 128, 128</span>)</p>
+  </div>
+</div>
+     
+<script>
+    var left = document.getElementById("left");
+    var rgb_left = document.getElementById("value_left");
+    var right = document.getElementById("right");
+    var rgb_right = document.getElementById("value_right");
+
+    var redSlider1 = document.getElementById("redRange1");
+    var redOutput1 = document.getElementById("redVal1");
+    redOutput1.value = redSlider1.value;
+    var redSlider2 = document.getElementById("redRange2");
+    var redOutput2 = document.getElementById("redVal2");
+    redOutput2.value = redSlider2.value;
+
+    var greenSlider1 = document.getElementById("greenRange1");
+    var greenOutput1 = document.getElementById("greenVal1");
+    greenOutput1.value = greenSlider1.value;
+    var greenSlider2 = document.getElementById("greenRange2");
+    var greenOutput2 = document.getElementById("greenVal2");
+    greenOutput2.value = greenSlider2.value;
+
+    var blueSlider1 = document.getElementById("blueRange1");
+    var blueOutput1 = document.getElementById("blueVal1");
+    blueOutput1.value = blueSlider1.value;
+    var blueSlider2 = document.getElementById("blueRange2");
+    var blueOutput2 = document.getElementById("blueVal2");
+    blueOutput2.value = blueSlider2.value;
+
+    left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+    right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+    rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+
+    blueSlider1.style.opacity = 1;
+    redSlider2.style.opacity = 1;
+
+    redSlider1.oninput = function() {
+        redOutput1.value = this.value;
+        redSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+
+    }
+
+    redSlider2.oninput = function() {
+        redOutput2.value = this.value;
+        redSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+
+    redOutput1.oninput = function() {
+        redSlider1.value = this.value;
+        redSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    }
+
+    redOutput2.oninput = function() {
+        redSlider2.value = this.value;
+        redSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+
+    greenSlider1.oninput = function() {
+        greenOutput1.value = this.value;
+        greenSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    }
+
+    greenSlider2.oninput = function() {
+        greenOutput2.value = this.value;
+        greenSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+
+    greenOutput1.oninput = function() {
+        greenSlider1.value = this.value;
+        greenSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    }
+
+    greenOutput2.oninput = function() {
+        greenSlider2.value = this.value;
+        greenSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+
+    blueSlider1.oninput = function() {
+        blueOutput1.value = this.value;
+        blueSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    }
+
+    blueSlider2.oninput = function() {
+        blueOutput2.value = this.value;
+        blueSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+
+    blueOutput1.oninput = function() {
+        blueSlider1.value = this.value;
+        blueSlider1.style.opacity = this.value / 255 + 0.1;
+        left.style.backgroundColor = "rgb(" + redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value + ")";
+        rgb_left.innerHTML = redSlider1.value + "," + greenSlider1.value + "," + blueSlider1.value;
+    }
+
+    blueOutput2.oninput = function() {
+        blueSlider2.value = this.value;
+        blueSlider2.style.opacity = this.value / 255 + 0.1;
+        right.style.backgroundColor = "rgb(" + redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value + ")";
+        rgb_right.innerHTML = redSlider2.value + "," + greenSlider2.value + "," + blueSlider2.value;
+    }
+</script>
+</body>
+</html> 
